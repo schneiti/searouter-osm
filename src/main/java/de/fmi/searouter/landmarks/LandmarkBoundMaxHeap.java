@@ -3,7 +3,7 @@ package de.fmi.searouter.landmarks;
 import java.util.Arrays;
 
 /**
- * class used to effeciently manage a priority queue of ids (represented as int instead of Integer objects)
+ * Max-heap used for retrieving the best active landmarks (maximum lower bound) for a routing query
  */
 public class LandmarkBoundMaxHeap {
     private final int INITIAL_SIZE = 400;

@@ -57,7 +57,7 @@ The default configuration is the landmark selection mode ```EQUAL_SPHERE``` usin
 
 
 ###  ... Install and run the routing frontend
-First place a .fmi file containing the dijkstra grid graph in the
+First place a .fmi file containing the grid graph in the
 [src/main/resources](./src/main/resources) directory called
 ```exported_grid.fmi```.
 
@@ -70,13 +70,13 @@ Finally, open a browser and access the url "http://localhost:8080/".
 
 **Note:** On my PC the web app consumes comparably quite a lot RAM which is why the routing behaves a little slower than with the Evaluation method (see next section).
 
-*The port of the web app can be changed by editing the [application.properties](./src/main/resources/application.properties) file-*
+*The port of the web app can be changed by editing the [application.properties](./src/main/resources/application.properties) file.*
 
 <img src="./docres/frontend.jpg" height="300px">
 
 ### ... Evaluate and compare different routers on a large scale
 
-First place a .fmi file containing the dijkstra grid graph in the
+First place a .fmi file containing the grid graph in the
 [src/main/resources](./src/main/resources) directory called
 ```exported_grid.fmi```.
 
