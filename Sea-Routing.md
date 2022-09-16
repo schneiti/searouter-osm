@@ -255,6 +255,7 @@ I have implemented five different distribution strategies for landmarks that I w
 
 Chooses randomly landmarks from the set of all vertices $V$.
 
+<img src="./docres/best_dist_rand.jpg" height="250">
 
 ### EQUAL_2D [[implementation](./src/main/java/de/fmi/searouter/landmarks/initializer/EqualDistributed2DMapInitializer.java)]
 
@@ -262,7 +263,7 @@ Landmarks are distributed equally on the water parts of the earth under the assu
 that the earth is flat and thus, distances between latitudes/longitudes constant. Therefore
 the resulting distribution is in real not equally distributed.
 
-<img src="./docres/best_dist_rand.jpg" height="250">
+<img src="./docres/best_dist_2d.jpg" height="250">
 
 
 ### EQUAL_SPHERE [[implementation](./src/main/java/de/fmi/searouter/landmarks/initializer/EqualDistributedOnSphereInitializer.java)]
