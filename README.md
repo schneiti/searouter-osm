@@ -53,7 +53,7 @@ The default configuration is the landmark selection mode ```EQUAL_SPHERE``` usin
 * In different [LandmarksInitializors](./src/main/java/de/fmi/searouter/landmarks/initializer/)
   - Here it is possible to set the number of candidate landmarks for each distribution mode.
 * In [ALT-Router .java files](./src/main/java/de/fmi/searouter/router/alt/)
-  - Here it is possible to change the default number of active landmarks that is used by each router.
+  - Here it is possible to change the default number of active landmarks that are used by each router.
 
 
 ###  ... Install and run the routing frontend

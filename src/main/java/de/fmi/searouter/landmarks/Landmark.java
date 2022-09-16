@@ -43,29 +43,16 @@ public class Landmark {
      */
     public static int[] landmarksToUseForQuery;
 
+    /**
+     * Used for calculation of the active landmark set. Stores all calculated ALT distance
+     * heuristics for the s-t distance of a query.
+     */
     public static double[] landmarkLowerBoundOnSTDistance;
 
-    private static LandmarkBoundMaxHeap maxHeap;
-
     /**
-     * Comparable landmark representation that enables a sorting of landmarks by its
-     * calculated lower bound for a given start-destination node pair.
+     * A Max-Heap used for the calculation of the active landmark set.
      */
-/*    private static class LandmarkIDLowerBoundMapping implements Comparable<LandmarkIDLowerBoundMapping> {
-        public int landmarkID;
-        public double lowerBound;
-
-        public LandmarkIDLowerBoundMapping(int landmarkID, double lowerBound) {
-            this.landmarkID = landmarkID;
-            this.lowerBound = lowerBound;
-        }
-
-        @Override
-        public int compareTo(LandmarkIDLowerBoundMapping o) {
-            return Double.compare(lowerBound, o.lowerBound);
-        }
-    }
-*/
+    private static LandmarkBoundMaxHeap maxHeap;
 
     /**
      * Prepares the landmarks for the query phase by selecting a subset of all available landmarks
