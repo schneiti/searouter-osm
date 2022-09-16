@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.7</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>de.fmi</groupId>
+	<artifactId>searouter</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>searouter</name>
+	<description>FaPra project for algorithms on open street map data.</description>
+	<properties>
+		<java.version>11</java.version>
+	</properties>
+	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx</artifactId>
+			<version>11</version>
+			<type>pom</type>
+		</dependency>
+
+
+		<!-- Spring Boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- For later (frontend)
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		-->
+
+
+		<!-- Osmosis -->
+		<dependency>
+			<groupId>org.openstreetmap.osmosis</groupId>
+			<artifactId>osmosis-pbf</artifactId>
+			<version>0.48.3</version>
+		</dependency>
+
+		<!-- JSON parsing -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20220320</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- Google Guava-->
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>31.1-jre</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.wolt.osm</groupId>
+			<artifactId>parallelpbf</artifactId>
+			<version>0.3.1</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes/static/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/vue-frontend/build</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+</project>
