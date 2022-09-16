@@ -16,7 +16,6 @@ import java.util.List;
 /**
  * Router using a bidirectional symmetric A* implementation.
  */
-@Component
 public class BiAStarSymmetric implements Router {
 
     public int bicounter = 0;

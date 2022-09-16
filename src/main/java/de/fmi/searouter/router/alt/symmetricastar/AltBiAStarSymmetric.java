@@ -18,7 +18,6 @@ import java.util.List;
 /**
  * Router using an ALT variant of a symmetric bidirectional A* implementation.
  */
-@Component
 public class AltBiAStarSymmetric implements ALTRouter {
 
     private int maxNumberOfQueryLandmarks = 5; // default

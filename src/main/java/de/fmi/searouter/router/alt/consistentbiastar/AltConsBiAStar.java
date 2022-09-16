@@ -16,7 +16,6 @@ import java.util.List;
 /**
  * Router using an ALT variant of a consistent bidirectional A* implementation.
  */
-@Component
 public class AltConsBiAStar implements ALTRouter {
 
     private int maxNumberOfQueryLandmarks = 5; // default

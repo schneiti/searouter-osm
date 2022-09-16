@@ -12,7 +12,6 @@ import java.util.*;
 /**
  * Router using a dijkstra implementation.
  */
-@Component
 public class DijkstraRouter implements Router {
 
     //current distance to the target node

@@ -18,7 +18,6 @@ import java.util.List;
 /**
  * Router using an ALT variant of an A* implementation.
  */
-@Component
 public class AltAStarRouter implements ALTRouter {
 
     private int maxNumberOfQueryLandmarks = 5; // default

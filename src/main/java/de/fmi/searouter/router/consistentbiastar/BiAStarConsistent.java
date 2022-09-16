@@ -16,7 +16,6 @@ import java.util.List;
 /**
  * Router using a bidirectional consistent A* implementation.
  */
-@Component
 public class BiAStarConsistent implements Router {
 
     public int bicounter = 0;

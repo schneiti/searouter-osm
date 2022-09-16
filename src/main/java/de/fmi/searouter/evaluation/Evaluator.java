@@ -55,11 +55,7 @@ public class Evaluator {
             randomSourceNodes.add(random.nextInt(maxNodeIdx + 1));
             randomTargetNodes.add(random.nextInt(maxNodeIdx + 1));
         }
-
-
-        randomSourceNodes.add(Grid.getNearestGridNodeByCoordinates(15.84, -30.96, true));
-        randomTargetNodes.add(Grid.getNearestGridNodeByCoordinates(23.76, 152.64, true));
-    }
+  }
 
     /**
      * @param routersToEvaluate A list of {@link Router Routers} that should be evaluated.

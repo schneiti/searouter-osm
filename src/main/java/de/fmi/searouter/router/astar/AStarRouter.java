@@ -16,7 +16,6 @@ import java.util.List;
 /**
  * Used to find a route when given a start and end node using A*.
  */
-@Component
 public class AStarRouter implements Router {
 
     //current distance to the target node

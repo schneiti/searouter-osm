@@ -15,7 +15,6 @@ import java.util.List;
 /**
  * Router using a bidirectional dijkstra implementation.
  */
-@Component
 public class BiDijkstra implements Router {
     //current distance to the target node
     protected final int[] currDistanceToNodeForward;
