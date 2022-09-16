@@ -49,7 +49,7 @@ The default configuration is the landmark selection mode ```EQUAL_SPHERE``` usin
 #### Parameters to set
 * In [Grid.java](./src/main/java/de/fmi/searouter/dijkstragrid/Grid.java):
   - *USE_LANDMARKS*: Whether landmarks should be initialized or not. Set this to ```false``` if you don't want to use ALT algorithms and want to save computation time and memory.
-  - *LANDMARK_DISTRIBUTION_MODE*: Which landmark selection/distribution strategy should be applied. One can choose from: RANDOM, EQUAL_2D, EQUAL_SPHERE, COASTLINE and MAX_AVOID. All distribution modes are explained in detail in [ALT.md](./ALT.md).
+  - *LANDMARK_DISTRIBUTION_MODE*: Which landmark selection/distribution strategy should be applied. One can choose from: RANDOM, EQUAL_2D, EQUAL_SPHERE, COASTLINE and MAX_AVOID. All distribution modes are explained in detail in [Sea-Routing.md](./Sea-Routing.md).
 * In different [LandmarksInitializors](./src/main/java/de/fmi/searouter/landmarks/initializer/)
   - Here it is possible to set the number of candidate landmarks for each distribution mode.
 * In [ALT-Router .java files](./src/main/java/de/fmi/searouter/router/alt/)
@@ -72,7 +72,13 @@ Finally, open a browser and access the url "http://localhost:8080/".
 
 *The port of the web app can be changed by editing the [application.properties](./src/main/resources/application.properties) file-*
 
+<img src="./docres/frontend.jpg" height="300px">
+
 ### ... Evaluate and compare different routers on a large scale
+
+First place a .fmi file containing the dijkstra grid graph in the
+[src/main/resources](./src/main/resources) directory called
+```exported_grid.fmi```.
 
 The [Evaluator.java](./src/main/java/de/fmi/searouter/evaluation/Evaluator.java) is a class providing means for evaluating large scales of queries for different routers. To use this class simply modify [EvaluatorMain.java](./src/main/java/de/fmi/searouter/evaluation/EvaluationMain.java) and run its main method.
 
@@ -125,9 +131,9 @@ All in all I implemented seven additional routers that perform better than Dijks
 A detailed description of them can be found **[here](./Sea-Routing.md)**.
 
 * Bidirectional Dijkstra [[implementation](./src/main/java/de/fmi/searouter/router/bidijkstra)]
-* $A*$ [[implementation](./src/main/java/de/fmi/searouter/router/astar)]
-* Bi-$A*$, symmetric [[implementation](./src/main/java/de/fmi/searouter/router/symmetricastar/)]
-* Bi-$A*$, consistent [[implementation](./src/main/java/de/fmi/searouter/router/consistentbiastar/)]
-* ALT-$A*$ [[implementation](./src/main/java/de/fmi/searouter/router/alt/astar/)]
-* ALT-Bi-$A*$, symmetric [[implementation](./src/main/java/de/fmi/searouter/router/alt/consistentbiastar/)]
-* ALT-Bi-$A*$, consistent [[implementation](./src/main/java/de/fmi/searouter/router/alt/symmetricastar/)]
+* A* [[implementation](./src/main/java/de/fmi/searouter/router/astar)]
+* Bi-A*, symmetric [[implementation](./src/main/java/de/fmi/searouter/router/symmetricastar/)]
+* Bi-A*, consistent [[implementation](./src/main/java/de/fmi/searouter/router/consistentbiastar/)]
+* ALT-A* [[implementation](./src/main/java/de/fmi/searouter/router/alt/astar/)]
+* ALT-Bi-A*, symmetric [[implementation](./src/main/java/de/fmi/searouter/router/alt/symmetricastar//)]
+* ALT-Bi-A*, consistent [[implementation](./src/main/java/de/fmi/searouter/router/alt/consistentbiastar/)]
