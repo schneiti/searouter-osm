@@ -4,22 +4,22 @@ This projects includes five different routing algorithms that work directly on t
 
 ## Dijkstra algorithm [[implementation](./src/main/java/de/fmi/searouter/router/dijkstra)]<a name="dijkstra"></a>
 
-Dijkstra's algorithm provides the conceptual basis for most routing algorithms. The idea is to calculate all distances to directly neighboring nodes starting from a currently considered node and, if the distance is smaller than previously calculated distances to this node, to update them in a global list. The first considered node is the start node. After that, the node that currently has the smallest distance to the start node and has not yet been considered is always considered next. The search ends as soon as the target node has been reached. 
-The shortest path can then be output by storing the predecessor node of each considered node that was on the shortest path to this node.
+Dijkstra's algorithm provides the conceptual basis for most routing algorithms. The idea is to calculate all distances to directly neighboring nodes, starting from a currently considered node and, if the distance is smaller than previously calculated distances to this node, to update them in a global list. The first considered node is the start node. After that, the node that currently has the smallest distance to the start node (and has not yet been considered) is always considered next. The search ends as soon as the target node has been reached. 
+The shortest path can then be outputted by storing the predecessor node of each node that was on the shortest path to this node.
 
-The data structure which always provides the next node to consider is in the following referred to as the *Priorty Queue*. In practice, this is often implemented using a Min-Heap.
-The weight of a vertex inside this Priority Queue is given by a function $k(v)$ with $v \in V$. For Dijkstra this function is defined by simply using the distance $d_s(v)$ of a vertex $v$ to the start vertex $s$:
+The data structure which always provides the next node to be considered is, in the following, referred to as the *Priorty Queue*. In practice, this is often implemented using a Min-Heap.
+The weight of a vertex inside this Priority Queue is given by a function $k(v)$ with $v \in V$. For Dijkstra, this function is defined by simply using the distance $d_s(v)$ of a vertex $v$ to the start vertex $s$:
 
 $k(v)=d_s(v)$
 
 
 ## $A*$ algorithm [[implementation](./src/main/java/de/fmi/searouter/router/astar)]<a name="astar"></a>
 
-$A*$ works in the same way as Dijkstra with one addition concering the priority queue. Instead of solely sorting the next nodes to consider based on their current distance to the start node, additionally a heuristic function is applied that estimates the distance to the target node.  
+$A*$ works in the same way as Dijkstra with one addition concering the priority queue. Instead of solely sorting the next nodes to consider based on their current distance to the start node, a heuristic function is applied additionaly that estimates the distance to the target node.  
 
 $k(v)=d_s(v)+\pi_t(v)$ with $\pi_t(v)$ being the heuristic function estimating the distance of the node $v$ to the target node $t$.
 
-The intuition of this approach is that with the heuristic the next node that is considered by $A*$ is already targeted towards the target node. Dikstra instead only consideres the edge weights for the Priority Queue which results basically in a circle-like search space if the graphs vertices would be equally distributed around the start node. With the heuristic the search space is therefore more directed towards the target node and is more likely to find the consider the target node as next node more earlier. This is equivalent to saying that the number of nodes popped out of the Priority Queue is smaller.
+The intuition of this approach is that with the heuristic, the next node that is considered by $A*$ is already targeted towards the target node. Dikstra instead only consideres the edge weights for the Priority Queue which results basically in a circle-like search space if the graphs vertices would be equally distributed around the start node. With the heuristic the search space is therefore more directed towards the target node and is more likely to find the target node as next node more earlier. This is equivalent to saying that the number of nodes popped out of the Priority Queue is smaller.
 
 ### Properties and constraints of $\pi_t(v)$<a name="properties-pi-t"></a>
 
@@ -44,15 +44,14 @@ $\pi_t$ is then called feasible if $l_{\pi}$ is nonnegative for all edges.
 
 ### Implementation details<a name="impl-details"></a>
 
-* As the grid graph of the searouter is situated on the earths surface, the arc distance between two nodes on earth in meters is used as a heuristic function $\pi_t(v)$.
-It is not possible to use simply euclidean distances (assuming that the earth would be flat) as then it might come true, that $\pi_t$ overestimates some distances.
-(TODO check this up, maybe try euclidean distances as well)
+* Due to the fact that the grid graph of the searouter is situated on the earths surface, the arc distance between two nodes on earth in meters is used as a heuristic function $\pi_t(v)$.
+It is not possible to use simply euclidean distances (assuming that the earth would be flat), because then it might come true, that $\pi_t$ overestimates some distances.
 * In order to avoid calculating the heuristic function multiple times for the same vertex, all previously calculated heuristic results are cached for the respective vertex.
 
 ## Bidirectional Dijkstra [[implementation](./src/main/java/de/fmi/searouter/router/bidijkstra)]<a name="bidijkstra"></a>
 
 Dijkstra looks first at all vertices that are nearest to the start point to find a route to the destination.
-Within a grid graph however, this results in a circle-like search space until the circumference of this great circle
+With a grid graph however, this results in a circle-like search space until the circumference of this great circle
 intersects with the target vertex (if one disregards obstacles). To reduce the size of this circle, and therefore the number of nodes that need to be popped
 out of the heap, one can alternate between a dijkstra starting from the start vertex and one dijkstra algorithm starting
 from the destination node. In this way, the search space is given by two smaller circles and the overall
@@ -160,7 +159,7 @@ distances of the nodes to the target node on the path. In this case and if there
 in the search area with the same distance, this would result in popping only the nodes from the heap
 that are already on the shortest path to the target node. 
 
-**In general:** The bigger the heuristic function is (while being admissible and thus not overestimating
+**In general:** The larger the values of the heuristic function are (while being admissible and thus not overestimating
 the real distances), the fewer nodes will be popped out of the heap. 
 
 Currently, all implemented variants of $A*$ use the linear distance to the target as heuristic. This
@@ -186,7 +185,7 @@ the triangle inequality can be used:
 $dist(s, t) \geq |dist(v, L) - dist(t, L)| = \pi_t(x)$. $L \in V$ being a landmark, $v \in V$, $t \in V$ being the target/destination node.
 
 This new heuristic function itself is more efficient to compute than computing the linear distance between two nodes on earth
-using the Haversine forumala. All in all, this results in two additional speed-up factors of ALT algorithms:
+using the Haversine formula. All in all, this results in two additional speed-up factors of ALT algorithms:
 
 1. Better heuristic for $A*$ algorithms
 2. More time-efficient heuristic function 
