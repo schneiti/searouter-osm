@@ -2,7 +2,7 @@ This repository is the outcome of a practical course offered by the University o
 implement a routing application for travels on the sea using a grid graph. For routing, different speed-up techniques should be
 implemented and tested that perform better than Dijkstra's algorithm. This particular project focuses hereby on ALT algorithms and their evaluation.
 
-**To understand the implementations of the routing algorithms and custom details like different landmark distribution strategies, it is emphasized to have a look at [Sea-Routing.md](./Sea-Routing.md) where this gets explained.**
+**To understand the implementations of the routing algorithms and custom details like different landmark distribution strategies, you are encouraged to have a look at [Sea-Routing.md](./Sea-Routing.md) where this gets explained.**
 
 If you are interested in how the routing algorithms compare, an analysis based on time measurements can be found in [Results.md](./Results.md).
 
