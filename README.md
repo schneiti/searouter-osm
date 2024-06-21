@@ -24,6 +24,9 @@ Finally, run the main() method of the class. The result may take some time to be
 depending on both the parameters set and the performance characteristics of the machine
 used to execute the application.
 
+The algorithm used for determining sea and land areas is based on a multi-threaded multi-level grid graph point-in-polygon check.
+The latter was proposed by [Li et al.](https://link.springer.com/chapter/10.1007/978-3-319-69487-0_5).
+
 **After the calculation of the grid graph a ```.fmi``` file containing the grid definition will be exported to
 the route directory of this project.** Its name is ```exported_grid.fmi``` 
 
@@ -87,45 +90,12 @@ The [Evaluator.java](./src/main/java/de/fmi/searouter/evaluation/Evaluator.java)
   - *NO_OF_QUERIES*: Number of random routing queries that should be used for the tests.
 
 
-# Where to find certain task solutions (**Note**: some updates since last evaluation)
-
-## Task 2
-
-PBF file import is performed in [CoastlineImporter.java](./src/main/java/de/fmi/searouter/osmimport/CoastlineImporter.java).
-However the whole pre-processing (and also the call of the CoastlineImporters import function is performed in [GridCreator.java](./src/main/java/de/fmi/searouter/dijkstragrid/GridCreator.java))
-
-## Task 3
-
-Since the initial implementation, we have improved the algorithm we use to perform the point-in-water
-check. It is now based on a **multi-level grid**. When building this grid we check which coastline has to be
-considered within a given grid cell. When doing this, we use different checks to ensure a very accurate 
-representation, especially with respect to lines following exact latitudes. This prevents problems caused
-by arcs between two points on a sphere. 
-
-All classes used for the multi-level-grid and its point-in-water check can be found in the package
- [coastlinegrid](./src/main/java/de/fmi/searouter/coastlinegrid). 
- 
- ## Task 4
- 
- Grid Graph: Gets created in the [GridCreator.java](./src/main/java/de/fmi/searouter/dijkstragrid/GridCreator.java) class.
- 
- In order to improve the runtime the point-in-water check gets performed multi-threaded.
- 
- ### Task 4.1
- 
- .fmi file import/export is implemented in [Grid.java](./src/main/java/de/fmi/searouter/dijkstragrid/Grid.java)
- 
- ## Task 5
- 
- Dijkstra’s Algorithm is implemented in [DijkstraRouter.java](./src/main/java/de/fmi/searouter/router/DijkstraRouter.java) using the
- [DijkstraHeap](./src/main/java/de/fmi/searouter/router/DijkstraHeap.java) as a heap data structure.
- 
- ## Task 6
+# Frontend
  
  The frontend implementation can be found in the [vue-frontend](./vue-frontend) directory.
  It is a web application available under localhost:8080 (see how to install section).
 
-## Task 7
+# Router implementations
 
 All in all I implemented seven additional routers that perform better than Dijkstra.
 A detailed description of them can be found **[here](./Sea-Routing.md)**.
